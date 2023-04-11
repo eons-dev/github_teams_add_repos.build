@@ -1,0 +1,10 @@
+next: 
+- build: publish
+	run_when_any: 
+	- release
+	build_in: pkg
+	copy: 
+	- /src: pkg/
+	config: 
+		clear_build_path: false
+		visibility: public
