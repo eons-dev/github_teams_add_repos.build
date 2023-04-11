@@ -22,7 +22,7 @@ class github_teams_add_repos(github):
             raise Exception(f"Invalid permission: {this.permission}")
 
         if (not this.repos):
-            code, this.repos = this.RunCommand(f"gh repo list {this.org} --limit 200 --json name --json owner -q '.[] | \"\(.owner.login)/\(.name)\"'", saveout=True)
+            this.repos = this.GetRepos(this.org)
         else:
             this.repos = [f"{this.org}/{repo}" for repo in this.repos]
         logging.info(f"Using repos: {this.repos}")
